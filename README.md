@@ -42,3 +42,6 @@ java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
   -i /Users/hshah/Desktop/swagger.json \
   -l jaxrs \
   -o samples/server/petstore/jaxrs/jersey2
+
+  harshil:webapps hshah$ rm -rf JerseyDemos
+harshil:webapps hshah$ cp ~/git/Swagger-Jersey/target/JerseyDemos.war .
