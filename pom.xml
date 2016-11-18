@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.swagger</groupId>
+    <artifactId>jersey_2_example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <jersey2.version>2.2</jersey2.version>
+        <jaxrs.version>2.0.1</jaxrs.version>
+    </properties>
+    <dependencies>
+        <!-- JAX-RS -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${jaxrs.version}</version>
+        </dependency>
+        <!-- Jersey 2.19 -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jersey2-jaxrs</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.3</version>
+        </dependency>
+
+        <!-- dependencies are needed for the client being generated -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <finalName>JerseyDemos</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.sebastian-daschner</groupId>-->
+                <!--<artifactId>jaxrs-analyzer-maven-plugin</artifactId>-->
+                <!--<version>0.7</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>analyze-jaxrs</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<backend>swagger</backend>-->
+                            <!--&lt;!&ndash;<deployedDomain>example.com</deployedDomain>&ndash;&gt;-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+                <!--<groupId>io.swagger</groupId>-->
+                <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
+                <!--<version>2.2.1</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<inputSpec>/Users/hshah/Desktop/swagger.json</inputSpec>-->
+                            <!--<language>java</language>-->
+                            <!--&lt;!&ndash;<configOptions>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<dateLibrary>java7</dateLibrary>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</configOptions>&ndash;&gt;-->
+                            <!--<library>jersey2</library>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+</project>
