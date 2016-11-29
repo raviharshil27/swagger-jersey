@@ -45,3 +45,10 @@ java -jar modules/swagger-codegen-cli/target/swagger-codegen-cli.jar generate \
 
   harshil:webapps hshah$ rm -rf JerseyDemos
 harshil:webapps hshah$ cp ~/git/Swagger-Jersey/target/JerseyDemos.war .
+
+http://localhost:8080/JerseyDemos/index.html#!/default/getMsg
+
+
+ISSUES : 
+https://groups.google.com/forum/#!topic/swagger-swaggersocket/KKg794nCZdo
+(had issues with fasterXML version in saas-api...)

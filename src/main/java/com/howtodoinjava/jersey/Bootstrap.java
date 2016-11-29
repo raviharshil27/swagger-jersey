@@ -21,7 +21,7 @@ public class Bootstrap extends HttpServlet {
     beanConfig.setSchemes(new String[]{"http"});
     beanConfig.setHost("localhost:8080");
     beanConfig.setBasePath("/JerseyDemos");
-    beanConfig.setResourcePackage("io.swagger.resources,com.howtodoinjava.jersey");
+//    beanConfig.setResourcePackage("io.swagger.resources,com.howtodoinjava.jersey");
     beanConfig.setScan(true);
   }
 }

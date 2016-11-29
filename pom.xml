@@ -43,6 +43,12 @@
             <version>1.5.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jaxrs</artifactId>
+            <version>1.5.8</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -57,6 +63,17 @@
             <version>1.5.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.webcohesion.enunciate</groupId>
+            <artifactId>enunciate-core-annotations</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itsoninc.saas.container.adapter</groupId>
+            <artifactId>braintree-payment-common</artifactId>
+            <version>1.1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>JerseyDemos</finalName>
@@ -68,43 +85,72 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>com.sebastian-daschner</groupId>-->
-                <!--<artifactId>jaxrs-analyzer-maven-plugin</artifactId>-->
-                <!--<version>0.7</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>analyze-jaxrs</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<backend>swagger</backend>-->
-                            <!--&lt;!&ndash;<deployedDomain>example.com</deployedDomain>&ndash;&gt;-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
 
             <!--<plugin>-->
-                <!--<groupId>io.swagger</groupId>-->
-                <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
-                <!--<version>2.2.1</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<inputSpec>/Users/hshah/Desktop/swagger.json</inputSpec>-->
-                            <!--<language>java</language>-->
-                            <!--&lt;!&ndash;<configOptions>&ndash;&gt;-->
-                                <!--&lt;!&ndash;<dateLibrary>java7</dateLibrary>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</configOptions>&ndash;&gt;-->
-                            <!--<library>jersey2</library>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--&lt;!&ndash;https://github.com/kongchen/swagger-maven-plugin&ndash;&gt;-->
+            <!--<groupId>com.github.kongchen</groupId>-->
+            <!--<artifactId>swagger-maven-plugin</artifactId>-->
+            <!--<version>3.1.4</version>-->
+            <!--<configuration>-->
+            <!--<apiSources>-->
+            <!--<apiSource>-->
+            <!--<springmvc>false</springmvc>-->
+            <!--<locations>com.howtodoinjava.jersey.JerseyService</locations>-->
+            <!--<schemes>http</schemes>-->
+            <!--<host>localhost:8080</host>-->
+            <!--<basePath>/rest</basePath>-->
+            <!--<info>-->
+            <!--<title>itson</title>-->
+            <!--<version>1.0.0</version>-->
+            <!--</info>-->
+            <!--<outputPath>${basedir}/generated/document.html</outputPath>-->
+            <!--<swaggerDirectory>generated/swagger-ui</swaggerDirectory>-->
+            <!--</apiSource>-->
+            <!--</apiSources>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>compile</phase>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
+
+            <plugin>
+                <groupId>com.webcohesion.enunciate</groupId>
+                <artifactId>enunciate-maven-plugin</artifactId>
+                <version>2.7.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>docs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <forceWarPackaging>false</forceWarPackaging>
+                    <docsDir>${project.build.directory}/docs</docsDir>
+                    <configFile>enunciate.xml</configFile>
+                    <!--<javacSourceVersion>1.7</javacSourceVersion>-->
+                    <!--<javacTargetVersion>1.7</javacTargetVersion>-->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>${project.build.directory}/docs</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
